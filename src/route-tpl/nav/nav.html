@@ -1,0 +1,34 @@
+<div class="kepler-nav-box">
+    <div class="kepler-nav">
+        <div class="nav-scaling">
+            <span class="glyphicon glyphicon-menu-hamburger"></span>
+        </div>
+
+        <div class="nav-box" append-source>
+            <div class="panel-group" ng-model="activePanels" data-allow-multiple="true" role="tablist" aria-multiselectable="true" bs-collapse
+                 allowMultiple="false">
+                <div class="nav-menu" ng-repeat="item in menuList">
+                    <div class="panel-heading" role="tab">
+                        <a href="{{item.menus.length > 0 ? 'javascript:void(0)' : item.url}}"
+                           bs-collapse-toggle
+                           ng-click="listClick(this)"
+                           ng-class="{true: 'btn-title accordion-toggle active', false: 'btn-title accordion-toggle'}[item.menuActive]">
+                            <i class="icon {{item.indexIcon}}"></i>
+                            <span ng-bind="item.title"></span>
+                            <i ng-show="item.menus.length > 0"
+                               ng-class="{true: 'subtitle-icon pull-right glyphicon glyphicon-triangle-bottom', false: 'subtitle-icon pull-right glyphicon glyphicon-triangle-right'}[item.isOpen]"></i>
+                        </a>
+                    </div>
+                    <div class="subTitle" ng-show="item.menus.length > 0" bs-collapse-target>
+                        <a href="javascript:;" role="tabpanel"  data-url="{{it.search}}" data-hash="{{item.hash}}"  ng-click="subTitleBtn($event)" ng-class="{true:'sub-active', false:''}[it.modelActive]" ng-repeat="it in item.menus">
+                            <div class="subtitles" data-url="{{it.search}}" data-hash="{{item.hash}}">
+                                <i class="icon {{it.subIndexIcon}}" data-url="{{it.search}}" data-hash="{{item.hash}}"></i>
+                                <span ng-bind="it.title" data-url="{{it.search}}" data-hash="{{item.hash}}"></span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
